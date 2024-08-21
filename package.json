@@ -1,0 +1,92 @@
+{
+  "name": "basicuianimations",
+  "displayName": "Basic UI animations",
+  "description": "Basic UI animations for copy, paste, and typing",
+  "version": "0.0.3",
+  "publisher": "copyai",
+  "icon": "resources/logo.png",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "basicUIAnimations.copy",
+        "title": "Copy and highlight selected text"
+      },
+      {
+        "command": "basicUIAnimations.paste",
+        "title": "Paste and highlight pasted text"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "basicUIAnimations.copyHighlightColor": {
+          "type": "string",
+          "default": "rgba(230, 97, 89, 0.7)",
+          "description": "Background color for highlighting copied text"
+        },
+        "basicUIAnimations.pasteHighlightColor": {
+          "type": "string",
+          "default": "rgba(255, 255, 0, 0.3)",
+          "description": "Background color for highlighting pasted text"
+        },
+        "basicUIAnimations.highlightDuration": {
+          "type": "number",
+          "default": 200,
+          "description": "Duration of the highlight effect in milliseconds"
+        },
+        "basicUIAnimations.typingEffectColor": {
+          "type": "string",
+          "default": "rgba(43, 255, 0, 0.6)",
+          "description": "Background color for the typing animation effect"
+        },
+        "basicUIAnimations.typingEffectDuration": {
+          "type": "number",
+          "default": 75,
+          "description": "Duration of the typing animation effect in milliseconds"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "basicUIAnimations.copy",
+        "key": "ctrl+c",
+        "mac": "cmd+c",
+        "when": "editorTextFocus && basicUIAnimations.init"
+      },
+      {
+        "command": "basicUIAnimations.paste",
+        "key": "ctrl+v",
+        "mac": "cmd+v",
+        "when": "editorTextFocus && basicUIAnimations.init"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.92.0",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
