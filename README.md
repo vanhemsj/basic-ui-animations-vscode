@@ -6,7 +6,9 @@ Features
 
 - Copy Highlighting: When you copy text, it briefly highlights the selected area, providing visual confirmation of the action.
 - Paste Highlighting: Pasted text is momentarily highlighted, making it easy to see where new content has been inserted.
-- Typing Animation: As you type, each character is subtly animated, creating a smooth and satisfying typing experience.
+- Typing Animation: As you type, each character is subtly animated, creating a smooth and satisfying typing experience including autocomplete.
+
+<img src="resources/basicuianimations.gif" alt="demo">
 
 Usage
 
