@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 interface Config {
   typingEffectColor: string;
+  typingGlowColor: string;
   typingEffectDuration: number;
   copyHighlightColor: string;
   pasteHighlightColor: string;
@@ -34,7 +35,8 @@ export function activate(context: vscode.ExtensionContext) {
 function updateConfig() {
   const wsConfig = vscode.workspace.getConfiguration("basicUIAnimations");
   config = {
-    typingEffectColor: wsConfig.get("typingEffectColor") || "rgba(43, 255, 0, 0.6)",
+    typingEffectColor: wsConfig.get("typingEffectColor") || "rgba(43, 255, 0, 0.192)",
+    typingGlowColor: wsConfig.get("typingGlowColor") || "rgba(43, 255, 0, 0.6)",
     typingEffectDuration: wsConfig.get("typingEffectDuration") || 75,
     copyHighlightColor: wsConfig.get("copyHighlightColor") || "rgba(230, 97, 89, 0.7)",
     pasteHighlightColor: wsConfig.get("pasteHighlightColor") || "rgba(255, 255, 0, 0.3)",
@@ -44,15 +46,16 @@ function updateConfig() {
 
 function createDecorationTypes() {
   decorationTypes = {
-    typing: vscode.window.createTextEditorDecorationType({
-      backgroundColor: config.typingEffectColor
-    }),
-    copy: vscode.window.createTextEditorDecorationType({
-      backgroundColor: config.copyHighlightColor
-    }),
-    paste: vscode.window.createTextEditorDecorationType({
-      backgroundColor: config.pasteHighlightColor
-    })
+      typing: vscode.window.createTextEditorDecorationType({
+          backgroundColor: config.typingEffectColor,
+          textDecoration: `none; box-shadow: 0 0 2px ${config.typingGlowColor}, 0 0 5px ${config.typingGlowColor}; border-radius:5px;`
+      }),
+      copy: vscode.window.createTextEditorDecorationType({
+          backgroundColor: config.copyHighlightColor,
+      }),
+      paste: vscode.window.createTextEditorDecorationType({
+          backgroundColor: config.pasteHighlightColor,
+      })
   };
 }
 

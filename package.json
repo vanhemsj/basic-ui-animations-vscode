@@ -2,7 +2,7 @@
   "name": "basicuianimations",
   "displayName": "Basic UI animations",
   "description": "Basic UI animations for copy, paste, and typing",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "copyai",
   "icon": "resources/logo.png",
   "repository": {
@@ -20,7 +20,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -54,13 +54,18 @@
         },
         "basicUIAnimations.typingEffectColor": {
           "type": "string",
-          "default": "rgba(43, 255, 0, 0.6)",
+          "default": "rgba(43, 255, 0, 0.192)",
           "description": "Background color for the typing animation effect"
         },
         "basicUIAnimations.typingEffectDuration": {
           "type": "number",
           "default": 75,
           "description": "Duration of the typing animation effect in milliseconds"
+        },
+        "basicUIAnimations.typingGlowColor": {
+          "type": "string",
+          "default": "rgba(43, 255, 0, 0.6)",
+          "description": "Glow color for the typing animation effect"    
         }
       }
     },
