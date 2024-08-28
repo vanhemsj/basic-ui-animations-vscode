@@ -2,7 +2,7 @@
   "name": "basicuianimations",
   "displayName": "Basic UI animations",
   "description": "Basic UI animations for copy, paste, and typing",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "publisher": "copyai",
   "icon": "resources/logo.png",
   "repository": {
@@ -65,7 +65,17 @@
         "basicUIAnimations.typingGlowColor": {
           "type": "string",
           "default": "rgba(43, 255, 0, 0.6)",
-          "description": "Glow color for the typing animation effect"    
+          "description": "Glow color for the typing animation effect"
+        },
+        "basicUIAnimations.enableSmoothCaret": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable smooth caret animation"
+        },
+        "basicUIAnimations.smoothCaretDuration": {
+          "type": "number",
+          "default": 80,
+          "description": "Duration of the smooth caret animation in milliseconds"
         }
       }
     },
